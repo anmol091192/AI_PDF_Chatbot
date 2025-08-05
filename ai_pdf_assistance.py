@@ -68,6 +68,14 @@ def initialize_qa_chain(documents):
     
     try:
         print("🔄 Creating embeddings and vector store...")
+        print(f"📊 Processing {len(documents)} document chunks...")
+        
+        # Check if using demo vs real PDF content
+        if documents[0].metadata.get("source") == "demo":
+            print("🚨 Using DEMO documents (no PDF uploaded yet)")
+        else:
+            print("📄 Using UPLOADED PDF content")
+            
         openai_embed = OpenAIEmbeddings()
         current_vectorstore = Chroma.from_documents(documents, embedding=openai_embed)
         print("✅ Vector store created successfully!")
