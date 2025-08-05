@@ -118,4 +118,5 @@ python ai_pdf_assistance.py
 
 ## Screenshot
 
+<img width="1987" height="957" alt="Screenshot 2025-08-05 at 12 52 38 PM" src="https://github.com/user-attachments/assets/418e3458-871c-4d21-8a09-15a4468a061f" />
 
