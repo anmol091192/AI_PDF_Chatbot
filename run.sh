@@ -29,4 +29,4 @@ fi
 
 # Run the application
 echo "🎯 Starting the application..."
-python ai_hr_assistance.py
+python ai_pdf_assistance.py
