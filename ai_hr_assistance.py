@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-AI HR Assistant - Nestlé HR Policy Chatbot
-A Gradio-based chatbot that answers questions about Nestlé's HR policies using RAG (Retrieval Augmented Generation)
+AI PDF Assistant - Chatbot
+A Gradio-based chatbot that answers questions about any PDF document using RAG (Retrieval Augmented Generation)
 """
 
 import os
@@ -24,28 +24,17 @@ if not os.getenv("OPENAI_API_KEY"):
 current_qa_chain = None
 current_vectorstore = None
 
-def load_default_pdf():
-    """Load the default Nestlé HR policy PDF if it exists"""
-    default_pdf_path = "the_nestle_hr_policy_pdf_2012.pdf"
-    
-    if os.path.exists(default_pdf_path):
-        print(f"📄 Loading default PDF: {default_pdf_path}")
-        return process_pdf_file(default_pdf_path)
-    else:
-        print("⚠️  No default PDF found. Please upload a PDF file to get started.")
-        return create_demo_documents()
-
 def create_demo_documents():
     """Create demo documents when no PDF is available"""
     from langchain.schema import Document
     print("⚠️  Running in demo mode with sample documents")
     
     return [
-        Document(page_content="This is a demo document about HR policies. Employees are entitled to vacation days and sick leave.", metadata={"source": "demo", "page": 1}),
-        Document(page_content="Company policy states that all employees must follow the code of conduct and maintain professional behavior.", metadata={"source": "demo", "page": 2}),
-        Document(page_content="For questions about benefits, compensation, or workplace policies, please contact the HR department.", metadata={"source": "demo", "page": 3}),
-        Document(page_content="Remote work policies allow flexible working arrangements with manager approval.", metadata={"source": "demo", "page": 4}),
-        Document(page_content="Training and development opportunities are available to all employees for skill enhancement.", metadata={"source": "demo", "page": 5})
+        Document(page_content="This is a demo document about general information. You can upload any PDF document to get started with real content.", metadata={"source": "demo", "page": 1}),
+        Document(page_content="Sample content for demonstration purposes. The AI assistant can answer questions about any PDF document you upload.", metadata={"source": "demo", "page": 2}),
+        Document(page_content="For best results, upload a PDF document and ask specific questions about its content, structure, or key information.", metadata={"source": "demo", "page": 3}),
+        Document(page_content="The system supports various types of documents including reports, manuals, research papers, and other text-based PDFs.", metadata={"source": "demo", "page": 4}),
+        Document(page_content="Upload your document using the file upload interface and start asking questions to get AI-powered insights.", metadata={"source": "demo", "page": 5})
     ]
 
 def process_pdf_file(pdf_path):
@@ -150,15 +139,15 @@ def respond(message, history):
     history.append({"role": "assistant", "content": answer})
     return "", history
 
-# Initialize with default PDF or demo documents
-print("🚀 Initializing AI HR Assistant...")
-initial_documents = load_default_pdf()
+# Initialize with demo documents only
+print("🚀 Initializing AI PDF Assistant...")
+initial_documents = create_demo_documents()
 current_qa_chain = initialize_qa_chain(initial_documents)
 
 print("🚀 Starting Gradio interface...")
 
-with gr.Blocks(title="AI HR Assistant") as demo:
-    gr.Markdown("# 🏢 AI HR Assistant")
+with gr.Blocks(title="AI PDF Assistant") as demo:
+    gr.Markdown("# 📄 AI PDF Assistant")
     gr.Markdown("Upload any PDF document and ask questions about its content using AI-powered search!")
     
     with gr.Row():

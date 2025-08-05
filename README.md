@@ -1,4 +1,4 @@
-# AI HR Assistant - Universal PDF Chatbot
+# AI PDF Assistant - Universal PDF Chatbot
 
 A Gradio-based chatbot that can answer questions about **any PDF document** using RAG (Retrieval Augmented Generation). Upload your own PDF files and get instant AI-powered answers!
 
@@ -7,7 +7,7 @@ A Gradio-based chatbot that can answer questions about **any PDF document** usin
 ### 1. Clone the Repository
 ```bash
 git clone <your-repo-url>
-cd "AI HR Assistant"
+cd "AI PDF Assistant"
 ```
 
 ### 2. Set Up Virtual Environment
@@ -34,6 +34,8 @@ cp .env.example .env
 ```bash
 python ai_hr_assistance.py
 ```
+
+> **Note**: The main script is named `ai_hr_assistance.py` for historical reasons. You can rename it to `ai_pdf_assistant.py` or similar for better consistency with the generic PDF functionality.
 
 The app will start and display:
 - Local URL: http://127.0.0.1:7860  
@@ -100,23 +102,13 @@ The app will start and display:
 python ai_hr_assistance.py
 ```
 
+> **Note**: Consider renaming the script to `ai_pdf_assistant.py` for better clarity about its generic PDF functionality.
+
 ## 🔧 Configuration
 
 - **Model**: Change `model="gpt-3.5-turbo"` to `"gpt-4"` for better responses (higher cost)
 - **Chunk Size**: Modify `chunk_size=1024` in `RecursiveCharacterTextSplitter` for different text processing
 - **Port**: Change `server_port=7860` to use a different port
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## ⚠️ Important Notes
 
